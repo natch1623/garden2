@@ -223,8 +223,43 @@ body{
 
 /* responsive */
 @media (max-width:600px){
-  .sun{ --sun-size: 120vmin; bottom: calc(var(--sun-size) * -0.5); }
-  .sun__img{ animation-duration: 24.3s; }
+  /* make page flow on small screens */
+  body{ height: auto; min-height: 100vh; padding: 2.4rem 0; }
+
+  /* reduce and wrap the big title so it doesn't cause horizontal scroll */
+  .greetings{
+    font-size: 3rem; /* smaller, readable on phones */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1rem;
+    line-height: 1;
+    margin: 0.4rem 0 0.6rem 0;
+    padding: 0 1rem;
+    text-align: center;
+    word-break: break-word;
+  }
+  .greetings > span{ display: inline-block; margin: 0 0.12rem; }
+
+  .description{
+    font-size: 1rem;
+    margin-bottom: 12px;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .button{ margin-bottom: 0.6rem; }
+  .botones a{ padding: 10px 14px; font-size: 1rem; border-radius: 999px; }
+
+  /* keep the decorative sun but push it further down so it doesn't overlap content */
+  .sun{ --sun-size: 100vmin; bottom: calc(var(--sun-size) * -0.6); }
+  .sun__img{ animation-duration: 24.3s; width: 95%; height: 95%; }
   .sun__rays{ animation-duration: 54s; width: calc(var(--sun-size) * 1.9); height: calc(var(--sun-size) * 1.9); }
   .sun__rays::before{ width: calc(var(--sun-size) * 2.1); height: calc(var(--sun-size) * 2.1); animation-duration: 40s; }
+
+  /* reduce star size slightly to avoid visual clutter */
+  .star{ width: 7px; height: 7px; }
+
+  /* ensure the fixed background doesn't introduce horizontal scroll */
+  .sky{ left: 0; right: 0; }
 }
